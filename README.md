@@ -76,10 +76,10 @@ Every learned transformation (altitude means, moisture median, rare-variety pool
 
 ## 📖 Documentation
 
-* [Methodology](docs/METHODOLOGY.md) — data cleaning rules, feature pipeline, evaluation protocol, every model's configuration
-* [Results](docs/RESULTS.md) — all numbers with confidence intervals, figures, and what they mean
-* [Lessons learned](docs/LESSONS_LEARNED.md) — the three leakages, how they were found, how much they were worth
-* [Data](data/README.md) — provenance, licence and column dictionary
+* [Methodology](docs/METHODOLOGY.md) - data cleaning rules, feature pipeline, evaluation protocol, every model's configuration
+* [Results](docs/RESULTS.md) - all numbers with confidence intervals, figures, and what they mean
+* [Lessons learned](docs/LESSONS_LEARNED.md) - the three leakages, how they were found, how much they were worth
+* [Data](data/README.md) - provenance, licence and column dictionary
 
 ### Notebooks (executed, read them on GitHub)
 
@@ -171,8 +171,8 @@ The analysis was carried out as a group project. This repository is the refactor
 * **Ferdinando Conte**
 * **Daniele Perego**
 * **Nicolas Oberi**
-* **Matteo Trossi** — [GitHub](https://github.com/DeveloperMatt02) · [LinkedIn](https://linkedin.com/in/matteotrossi)
+* **Matteo Trossi** - [GitHub](https://github.com/DeveloperMatt02) · [LinkedIn](https://linkedin.com/in/matteotrossi)
 
 ## 📄 License
 
-This project is licensed under the MIT License — see [LICENSE](LICENSE). The CQI data are published for public use; see [`data/README.md`](data/README.md).
+This project is licensed under the MIT License - see [LICENSE](LICENSE). The CQI data are published for public use; see [`data/README.md`](data/README.md).
