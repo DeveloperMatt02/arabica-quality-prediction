@@ -40,7 +40,7 @@ Mann–Whitney tests between classes (`reports/metrics/eda_mann_whitney.csv`):
 | category-two defects | 2 | 1 | 0.01 |
 | category-one defects | 0 | 0 | 0.24 |
 
-Excellence rate by processing method: Unknown 16 %, Natural 12 %, Semi-washed 11 %, Honey 8 %, Washed 6 %. By country (n ≥ 10): Ethiopia 57 %, Kenya 29 %, Uganda 27 %, Peru 20 %, then everything else below 15 %; Mexico (the largest origin, 234 lots) 1.3 %. The `Unknown` processing and variety levels are mostly Ethiopian lots with incomplete metadata — *missing* is informative in this dataset.
+Excellence rate by processing method: Unknown 16 %, Natural 12 %, Semi-washed 11 %, Honey 8 %, Washed 6 %. By country (n ≥ 10): Ethiopia 57 %, Kenya 29 %, Uganda 27 %, Peru 20 %, then everything else below 15 %; Mexico (the largest origin, 234 lots) 1.3 %. The `Unknown` processing and variety levels are mostly Ethiopian lots with incomplete metadata - *missing* is informative in this dataset.
 
 ## 3. Unsupervised structure
 
@@ -79,14 +79,14 @@ What the table says:
 * **Signal, yes.** Every model except the single decision tree quadruples the random AUPRC; ROC AUCs of 0.74–0.82 mean that a randomly chosen excellent lot is ranked above a random ordinary lot three times out of four.
 * **Ensembles > linear, slightly.** Random forest and the XGBoost family cluster at AUPRC 0.40–0.44 on the test split and 0.34–0.38 out-of-fold; the logistic regressions at 0.32–0.34 / 0.26–0.31. Interactions between altitude, origin, processing and moisture add roughly 0.05–0.10 AUPRC over a linear logit.
 * **No winner among the ensembles.** The bootstrap intervals are ±0.2 wide and overlap almost completely. Feature engineering (+0.004), the grid search (−0.01) and SMOTE-NC (+0.001) move the point estimate within the noise; SMOTE-NC does improve the out-of-fold AUPRC (0.36 vs 0.34) at the cost of ROC AUC.
-* **Operating point.** At the F1-optimal threshold the models flag 15–30 lots out of 248 and catch 6–10 of the 21 excellent ones. As a screening rule — "cup these first" — that triples the hit rate of a random pick; as a substitute for cupping it is not usable.
-* **The reduced random forest** (15 of 27 encoded columns kept) has the best out-of-fold AUPRC and ROC AUC but a lower test AUPRC — one more reminder that with 21 positives a ±0.05 difference is not a difference.
+* **Operating point.** At the F1-optimal threshold the models flag 15–30 lots out of 248 and catch 6–10 of the 21 excellent ones. As a screening rule - "cup these first" - that triples the hit rate of a random pick; as a substitute for cupping it is not usable.
+* **The reduced random forest** (15 of 27 encoded columns kept) has the best out-of-fold AUPRC and ROC AUC but a lower test AUPRC - one more reminder that with 21 positives a ±0.05 difference is not a difference.
 
 Leakage demonstrations on the same models (`leakage_threshold_on_test.csv`, `leakage_naive_smote.csv`):
 
 | Shortcut | Reported | Honest |
 |---|---|---|
-| random forest, threshold tuned on the **test labels** | F1 = 0.44 | F1 = 0.33 (same AUPRC 0.44 — it is threshold-free) |
+| random forest, threshold tuned on the **test labels** | F1 = 0.44 | F1 = 0.33 (same AUPRC 0.44 - it is threshold-free) |
 | plain SMOTE on the whole training set, threshold on the **resampled** train predictions | F1 = 0.97, AUPRC = 0.997 (training) | F1 = 0.38, AUPRC = 0.40 (test) |
 
 ## 5. What drives the predictions
@@ -99,7 +99,7 @@ Out-of-fold permutation importance of the random forest, aggregated by raw varia
 
 Unpenalised logistic regression (GLM, `logreg_glm_summary.txt`): per standard deviation, altitude +0.76 log-odds (p < 10⁻⁹), category-two defects −0.61 (p < 10⁻⁴), moisture −0.30 (p = 0.003); natural (+1.48) and semi-washed (+1.68) processing, African (+1.09) and Maritime Asia/Pacific (+1.00) origin significant and positive; South America (−0.60) and Typica (−1.43) significant and negative; the moisture-missing flag +0.33 (p < 10⁻³). Deviance residuals are flat in every numeric predictor (no transformation needed); the most influential points are excellent lots with ordinary profiles, not errors.
 
-XGBoost gain vs split count: gain is led by categorical dummies (Africa, washed, moisture-missing, green colour, Typica), split count by altitude (2,927 splits) and category-two defects (1,206) — the trees keep subdividing the continuous variables, a mild overfitting signature. Under SMOTE-NC the gain of the "lab signature" dummies (washed, moisture-missing, green) collapses by 70–80 % while African origin gains: oversampling shifts the model toward agronomically plausible variables without improving its accuracy.
+XGBoost gain vs split count: gain is led by categorical dummies (Africa, washed, moisture-missing, green colour, Typica), split count by altitude (2,927 splits) and category-two defects (1,206) - the trees keep subdividing the continuous variables, a mild overfitting signature. Under SMOTE-NC the gain of the "lab signature" dummies (washed, moisture-missing, green) collapses by 70–80 % while African origin gains: oversampling shifts the model toward agronomically plausible variables without improving its accuracy.
 
 ## 6. Sensory track
 
@@ -129,7 +129,7 @@ All six coefficients are significant (p ≤ 0.003); pairwise correlations betwee
 ## 7. Conclusions and limitations
 
 1. Pre-harvest data allow a **screening**, not a verdict: AUPRC ≈ 0.4 against a 0.08 baseline, with altitude, secondary defects, moisture, processing and macro-origin as the drivers.
-2. The **class imbalance is not the bottleneck** — SMOTE-NC, class weights and threshold tuning all land in the same place. What is missing is *resolution*: soil, micro-climate, harvest timing and post-harvest handling are not in the data, and two lots that look identical on every recorded variable can differ by ten cup points.
+2. The **class imbalance is not the bottleneck** - SMOTE-NC, class weights and threshold tuning all land in the same place. What is missing is *resolution*: soil, micro-climate, harvest timing and post-harvest handling are not in the data, and two lots that look identical on every recorded variable can differ by ten cup points.
 3. **Small positives dominate the uncertainty.** 21 test positives give ±0.2 AUPRC intervals; the out-of-fold estimates (82 positives) are the more reliable ranking, and they favour the tuned XGBoost / reduced random forest by a hair.
 4. **Data artefacts matter more than model choice** here: the `Moisture == 0` code and the informative missingness of processing/variety are lab signatures that a careless pipeline turns into leakage.
 5. The **sensory scores define the target**; their apparent predictive power is circular. The only legitimate use is the ranking of attributes, which puts flavour and aftertaste at the top.
