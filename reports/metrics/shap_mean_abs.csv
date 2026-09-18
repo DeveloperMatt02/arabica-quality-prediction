@@ -1,0 +1,29 @@
+feature,mean_abs_shap
+altitude_mean_meters,1.2526327
+Category.Two.Defects,0.7594474
+Processing.Method_Washed,0.5046225
+Moisture,0.49811158
+Variety_Typica,0.3791141
+MacroArea_Africa,0.30409023
+MacroArea_Central/North America,0.3009385
+Color_green,0.27990708
+MacroArea_Maritime Asia/Pacific,0.25566873
+MacroArea_South America,0.20751183
+Moisture_missing,0.1692009
+Category.One.Defects,0.12188932
+Variety_Rare,0.118352674
+Processing.Method_Unknown,0.089953
+Color_Unknown,0.089569226
+Processing.Method_Natural,0.086389005
+MacroArea_Mainland Asia,0.07652777
+Color_blue-green,0.076456845
+Variety_Catuai,0.07045193
+Variety_Caturra,0.06536846
+Variety_Bourbon,0.058547333
+Variety_Unknown,0.046385266
+Variety_Other,0.039970517
+Processing.Method_Semi-washed,0.029942034
+Variety_Yellow Bourbon,0.01530468
+Variety_Hawaiian Kona,0.0076044467
+Processing.Method_Honey,0.0009083073
+Variety_Mundo Novo,0.0

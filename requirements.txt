@@ -1,0 +1,14 @@
+numpy>=1.26
+pandas>=2.1
+scipy>=1.11
+scikit-learn>=1.4
+xgboost>=2.0
+imbalanced-learn>=0.12
+statsmodels>=0.14
+shap>=0.45
+matplotlib>=3.8
+jupyter
+ipykernel
+nbformat
+nbconvert
+pytest>=7

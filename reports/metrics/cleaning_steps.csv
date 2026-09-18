@@ -1,0 +1,7 @@
+step,rows
+raw,1311
+drop Total.Cup.Points == 0,1310
+drop rows without country and region,1309
+drop implausible altitudes,1266
+drop Processing.Method == Other,1240
+"recode Moisture == 0 as missing (229 rows, no drop)",1240

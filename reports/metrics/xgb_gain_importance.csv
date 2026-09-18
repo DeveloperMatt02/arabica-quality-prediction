@@ -1,0 +1,28 @@
+feature,gain,weight
+MacroArea_Africa,34.81067657470703,231.0
+Processing.Method_Washed,19.71269989013672,315.0
+Moisture_missing,13.70014476776123,230.0
+Color_green,13.187033653259277,305.0
+Variety_Typica,12.857498168945312,266.0
+MacroArea_Maritime Asia/Pacific,11.251574516296387,227.0
+Color_blue-green,10.183338165283203,262.0
+altitude_mean_meters,9.654824256896973,2927.0
+Category.Two.Defects,9.142657279968262,1206.0
+MacroArea_South America,9.069290161132812,312.0
+Processing.Method_Honey,8.821146011352539,2.0
+Moisture,8.035506248474121,1072.0
+Variety_Bourbon,7.746492385864258,238.0
+Variety_Rare,7.668069839477539,245.0
+Category.One.Defects,7.104234218597412,445.0
+Color_Unknown,6.406620502471924,247.0
+Processing.Method_Natural,6.265662670135498,275.0
+Processing.Method_Semi-washed,6.2631516456604,93.0
+MacroArea_Mainland Asia,5.9671950340271,150.0
+Variety_Caturra,5.437393665313721,100.0
+Variety_Unknown,5.319241046905518,156.0
+Variety_Yellow Bourbon,4.932070732116699,101.0
+MacroArea_Central/North America,4.750207901000977,222.0
+Processing.Method_Unknown,4.530503273010254,147.0
+Variety_Catuai,4.502784252166748,104.0
+Variety_Other,3.7630653381347656,140.0
+Variety_Hawaiian Kona,3.4170424938201904,51.0

@@ -1,0 +1,8 @@
+{
+  "n_rows": 1240,
+  "n_excellent": 103,
+  "n_train": 992,
+  "n_test": 248,
+  "positives_train": 82,
+  "positives_test": 21
+}

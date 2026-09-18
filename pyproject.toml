@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coffee-quality"
+version = "1.0.0"
+description = "Can elite Arabica coffee be predicted before anyone tastes it? Imbalanced classification on CQI cupping data."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Matteo Trossi" }]
+keywords = ["applied-statistics", "imbalanced-classification", "xgboost", "shap", "coffee"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "scipy>=1.11",
+    "scikit-learn>=1.4",
+    "xgboost>=2.0",
+    "imbalanced-learn>=0.12",
+    "statsmodels>=0.14",
+    "shap>=0.45",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+notebooks = ["jupyter", "ipykernel", "nbconvert", "nbformat"]
+dev = ["pytest>=7", "ruff>=0.4"]
+
+[project.urls]
+Repository = "https://github.com/DeveloperMatt02/arabica-quality-prediction"
+
+[tool.setuptools.packages.find]
+include = ["coffee_quality*"]
+exclude = ["data*", "reports*", "notebooks*", "docs*", "tests*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

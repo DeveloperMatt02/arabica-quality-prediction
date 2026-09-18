@@ -1,0 +1,7 @@
+,mean,mean,std,std
+model,Logistic regression,Random forest,Logistic regression,Random forest
+metric,,,,
+average_precision,0.939,0.912,0.047,0.06
+balanced_accuracy,0.977,0.933,0.019,0.018
+f1,0.844,0.817,0.067,0.064
+roc_auc,0.995,0.99,0.004,0.006

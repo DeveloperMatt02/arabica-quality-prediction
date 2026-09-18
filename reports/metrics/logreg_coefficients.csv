@@ -1,0 +1,29 @@
+,LogReg (unpenalised),LogReg (unpenalised + RFECV),LogReg L2,LogReg L1
+Variety_Yellow Bourbon,-6.3975,-6.7268,-0.2314,0.0
+Variety_Mundo Novo,-4.8269,-5.1786,-0.194,0.0
+Processing.Method_Semi-washed,1.6789,1.6379,0.2539,0.0
+Processing.Method_Natural,1.4796,1.4711,0.4236,0.2279
+Variety_Typica,-1.4371,-1.4078,-0.5658,-0.9442
+MacroArea_Africa,1.0933,1.0708,0.6611,1.1177
+MacroArea_Maritime Asia/Pacific,0.9974,1.0239,0.4467,0.8863
+Processing.Method_Honey,0.9737,0.9368,0.0221,0.0
+Processing.Method_Washed,,,-0.6352,-0.8973
+MacroArea_Mainland Asia,-0.777,-0.7588,-0.2884,0.0
+altitude_mean_meters,0.7634,0.7639,0.664,0.698
+Category.Two.Defects,-0.6105,-0.5797,-0.4449,-0.459
+MacroArea_South America,-0.606,-0.5807,-0.5687,-0.4347
+Variety_Unknown,0.5649,0.6045,0.3551,0.0563
+Color_blue-green,0.5359,0.538,0.191,0.0656
+Variety_Rare,0.4442,0.482,0.3356,0.0443
+Processing.Method_Unknown,0.4475,0.4204,-0.0692,0.0
+Color_Unknown,0.3179,0.3378,0.0705,0.0
+Moisture_missing,0.3315,0.3304,0.2866,0.2667
+Moisture,-0.3024,-0.3054,-0.2658,-0.222
+Color_green,,,-0.2664,-0.2919
+MacroArea_Central/North America,,,-0.2556,0.0
+Variety_Other,0.1715,0.2064,0.1361,0.0
+Variety_Bourbon,0.1726,0.1942,0.1376,0.0
+Variety_Hawaiian Kona,-0.1152,,0.118,0.0
+Category.One.Defects,0.1033,,0.0554,0.0007
+Variety_Catuai,-0.0846,,-0.0364,0.0
+Variety_Caturra,,,-0.0596,0.0

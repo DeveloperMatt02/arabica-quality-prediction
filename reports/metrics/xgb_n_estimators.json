@@ -1,0 +1,22 @@
+{
+  "vanilla": {
+    "n_estimators": 1786,
+    "best_iteration_per_fold": [
+      1997,
+      1897,
+      1624,
+      1327,
+      1077
+    ]
+  },
+  "feature_engineering": {
+    "n_estimators": 1573,
+    "best_iteration_per_fold": [
+      2078,
+      2348,
+      1430,
+      821,
+      1425
+    ]
+  }
+}

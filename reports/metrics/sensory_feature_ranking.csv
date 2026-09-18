@@ -1,0 +1,7 @@
+feature,logit_coef,lasso_coef,permutation_importance,rf_gini_importance,mean_difference,overall_score
+Flavor,2.2511,4.6658,0.1577,0.3075,0.6437,0.965
+Aftertaste,2.3928,3.0656,0.0724,0.1692,0.6116,0.5395
+Balance,1.6591,2.6113,0.1496,0.224,0.5382,0.5142
+Acidity,1.6925,2.515,0.0958,0.1524,0.5882,0.3381
+Body,1.3824,2.4157,0.0401,0.0713,0.4656,0.0629
+Aroma,1.3817,2.1096,0.0223,0.0757,0.5279,0.0046
