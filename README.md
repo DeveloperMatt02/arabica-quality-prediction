@@ -86,7 +86,7 @@ Every learned transformation (altitude means, moisture median, rare-variety pool
 | # | Notebook | Content |
 |---|---|---|
 | 01 | [Data cleaning and EDA](notebooks/01_data_cleaning_and_eda.ipynb) | cleaning rules, target definition, class imbalance, what moves with excellence |
-| 02 | [Unsupervised structure](notebooks/02_unsupervised_structure.ipynb) | PCA, t-SNE, k-means, hierarchical, DBSCAN — one continuous cloud along the altitude axis |
+| 02 | [Unsupervised structure](notebooks/02_unsupervised_structure.ipynb) | PCA, t-SNE, k-means, hierarchical, DBSCAN - one continuous cloud along the altitude axis |
 | 03 | [Agronomic models](notebooks/03_agronomic_models.ipynb) | logistic regression (4 variants), XGBoost (3 variants), SMOTE-NC, decision tree, random forest; leakage demos |
 | 04 | [Interpretability](notebooks/04_interpretability.ipynb) | GLM inference and diagnostics, gain vs split count, SHAP, out-of-fold permutation importance |
 | 05 | [Sensory track](notebooks/05_sensory_track.ipynb) | the sensory paradox; ranking of the cupping dimensions |
