@@ -7,11 +7,11 @@
 ![Tests](https://github.com/DeveloperMatt02/arabica-quality-prediction/actions/workflows/tests.yml/badge.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-> Course project for **Applied Statistics** — MSc in Computer Science and Engineering (AI track), Politecnico di Milano, 2026.
-> Team project *"Guardiani della Gaussiana"*, refactored into a reproducible repository.
+> Course project for **Applied Statistics** - MSc in Computer Science and Engineering (AI track), Politecnico di Milano, 2026.
+> Team project *"Guardiani della Gaussiana"*
 
 **Can you predict elite coffee before anyone tastes it?**
-1,311 Arabica lots graded by the Coffee Quality Institute, of which only **8 % score ≥ 85 points** ("excellent": 106 lots in the raw data, 103 of 1,240 after cleaning). Using nothing but information available before cupping — altitude, origin, variety, processing method, bean colour, moisture and defect counts — we compare logistic regression, XGBoost and random forests under a leakage-free evaluation protocol, explain the models with SHAP and permutation importance, and show why the sensory scores that *look* like the best predictors cannot be used at all.
+1,311 Arabica lots graded by the Coffee Quality Institute, of which only **8 % score ≥ 85 points** ("excellent": 106 lots in the raw data, 103 of 1,240 after cleaning). Using nothing but information available before cupping - altitude, origin, variety, processing method, bean colour, moisture and defect counts - we compare logistic regression, XGBoost and random forests under a leakage-free evaluation protocol, explain the models with SHAP and permutation importance, and show why the sensory scores that *look* like the best predictors cannot be used at all.
 
 ## 🚀 Overview
 
@@ -24,7 +24,7 @@ The project runs on two tracks that share the same cleaned data:
 
 ### Key findings
 
-1. **The agronomic signal is real but weak.** Every model beats the random baseline (AUPRC 0.08) by a factor of 4–5, but the best ensembles plateau at AUPRC ≈ 0.40–0.44 and F1 ≈ 0.35 on the test split, retrieving 3–4 excellent lots out of 10 at ~40 % precision. Good enough to prioritise cupping slots, not to replace the cup.
+1. **The agronomic signal is real but weak.** Every model beats the random baseline (AUPRC 0.08) by a factor of 4–5, but the best ensembles plateau at AUPRC ≈ 0.40-0.44 and F1 ≈ 0.35 on the test split, retrieving 3-4 excellent lots out of 10 at ~40 % precision. Good enough to prioritise cupping slots, not to replace the cup.
 2. **Altitude, secondary defects, moisture, processing method and macro-origin carry the signal**, in the direction agronomy predicts: higher, cleaner, drier lots from East Africa score better. Coefficients, SHAP values and permutation importance agree.
 3. **No model family wins.** With 21 positives in the test split, bootstrap intervals on AUPRC are ±0.2 wide; random forest, XGBoost, XGBoost + feature engineering and XGBoost + SMOTE-NC are statistically indistinguishable, and all beat the logistic regressions by a small margin (interactions matter).
 4. **The data hides proxies.** `Moisture == 0` is not a measurement but a "not measured" code used by a few certifying labs that also grade a disproportionate share of excellent lots; the strong "moisture effect" highlighted by SHAP in the original analysis was partly this artefact. It is now recoded as missing and modelled with an explicit indicator.
