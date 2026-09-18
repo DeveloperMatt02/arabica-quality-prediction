@@ -18,14 +18,14 @@ this repository adds no claim over them.
 Lookup table *(Country.of.Origin, Region) → (Latitude, Longitude)* obtained
 once with `scripts/geocode_regions.py` (OpenStreetMap Nominatim, OpenCage as
 fallback). Coordinates are region- or country-level centroids, used only for
-the exploratory map and the unsupervised analysis — never as model inputs.
+the exploratory map and the unsupervised analysis - never as model inputs.
 
 ## Column dictionary (columns used downstream)
 
 | Column | Type | Meaning |
 |---|---|---|
 | `Total.Cup.Points` | float | Q-grader total score (0–100). **Target:** `Excellent = Total.Cup.Points >= 85` |
-| `Aroma` … `Cupper.Points` | float | The ten sensory scores that add up to the total — used only in the sensory track |
+| `Aroma` … `Cupper.Points` | float | The ten sensory scores that add up to the total - used only in the sensory track |
 | `altitude_mean_meters` | float | Mean farm altitude (m). 17% missing; values outside 200–3,300 m are errors |
 | `Moisture` | float | Green-bean moisture fraction. `0` means *not measured* (18% of rows) |
 | `Category.One.Defects` | int | Primary (disqualifying) defects per 300 g sample |
