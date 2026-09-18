@@ -1,6 +1,6 @@
 # Methodology
 
-**Project:** Arabica Quality Prediction — Applied Statistics, Politecnico di Milano
+**Project:** Arabica Quality Prediction - Applied Statistics, Politecnico di Milano
 **Companion documents:** [RESULTS.md](RESULTS.md) · [LESSONS_LEARNED.md](LESSONS_LEARNED.md) · [data/README.md](../data/README.md)
 
 ---
@@ -29,8 +29,8 @@ Excellent = 1  if  Total.Cup.Points >= 85  else 0
 
 This is a binary classification with **8 % positives** (106 of 1,311 raw lots; 103 of 1,240 after cleaning). Two consequences drive every choice below:
 
-* accuracy is meaningless (a constant "no" scores 92 %) — the headline metric is the **area under the precision–recall curve (AUPRC / average precision)**, whose random baseline equals the positive rate (0.08);
-* with ~20 positives in any 20 % hold-out, single-split metrics are noisy — every test metric is reported with a **bootstrap confidence interval** and next to its **out-of-fold** counterpart on the training split.
+* accuracy is meaningless (a constant "no" scores 92 %) - the headline metric is the **area under the precision–recall curve (AUPRC / average precision)**, whose random baseline equals the positive rate (0.08);
+* with ~20 positives in any 20 % hold-out, single-split metrics are noisy - every test metric is reported with a **bootstrap confidence interval** and next to its **out-of-fold** counterpart on the training split.
 
 ## 2. Data cleaning
 
@@ -64,7 +64,7 @@ Region-level coordinates (`data/raw/extracted_coords.csv`) are merged for the ex
 | numeric | `Moisture`, `Category.One.Defects`, `Category.Two.Defects`, `altitude_mean_meters` |
 | categorical | `MacroArea` (derived from country), `Color`, `Processing.Method`, `Variety` |
 
-Deliberately **excluded**: the ten sensory scores and `Total.Cup.Points` (they define the target — see §8), `Country.of.Origin` and `Region` as such (36 and 300+ levels: a tree can memorise farms; they are collapsed into five macro-areas), latitude/longitude (region centroids, same memorisation risk, no agronomic content beyond altitude and macro-area), `Harvest.Year` (dirty free text, no expected causal role), identifiers.
+Deliberately **excluded**: the ten sensory scores and `Total.Cup.Points` (they define the target - see §8), `Country.of.Origin` and `Region` as such (36 and 300+ levels: a tree can memorise farms; they are collapsed into five macro-areas), latitude/longitude (region centroids, same memorisation risk, no agronomic content beyond altitude and macro-area), `Harvest.Year` (dirty free text, no expected causal role), identifiers.
 
 ### 3.2 The pipeline (`coffee_quality/preprocessing.py`)
 
@@ -78,8 +78,8 @@ RegionAltitudeImputer  →  MoistureImputer  →  MacroAreaMapper  →  [Agronom
 |---|---|---|
 | `RegionAltitudeImputer` | mean altitude per (country, region), per country, global median | fills missing altitude hierarchically: region → country → global |
 | `MoistureImputer` | median moisture | fills missing moisture; adds the `Moisture_missing` indicator |
-| `MacroAreaMapper` | — | `Country.of.Origin` → one of *Central/North America, South America, Africa, Mainland Asia, Maritime Asia/Pacific*; drops country and region |
-| `AgronomicFeatureEngineer` (XGBoost + FE only) | — | `log1p` of both defect counts, `Has_Cat_One_Defect` flag, `log1p(altitude / moisture)`; drops raw defect counts |
+| `MacroAreaMapper` | - | `Country.of.Origin` → one of *Central/North America, South America, Africa, Mainland Asia, Maritime Asia/Pacific*; drops country and region |
+| `AgronomicFeatureEngineer` (XGBoost + FE only) | - | `log1p` of both defect counts, `Has_Cat_One_Defect` flag, `log1p(altitude / moisture)`; drops raw defect counts |
 | `ColumnTransformer` | scaler statistics; category levels | `StandardScaler` on numeric columns (identity for trees); `OneHotEncoder` with `max_categories=10` (rare varieties → *Rare*) and `handle_unknown="infrequent_if_exist"`; one reference level dropped for the unpenalised logit only (Caturra, Washed, green, Central/North America) |
 
 Because all of this is inside the pipeline, it is re-fitted on the training part of every cross-validation fold and on the full training split for the final model. **No statistic of the validation or test rows ever enters a transformation.** The one-hot encoder emits a pandas DataFrame (`set_output(transform="pandas")`) so that column names survive to the classifier, which keeps SHAP and importance plots readable.
@@ -95,7 +95,7 @@ One stratified 80/20 hold-out (`random_state=42`): 992 training lots (82 excelle
 1. **Out-of-fold probabilities** on the training split with 5-fold stratified CV (`random_state=42`). When the estimator is a `GridSearchCV`, this is a *nested* CV: hyper-parameters are re-tuned on the inner folds (`random_state=123`) of every outer fold.
 2. **Decision threshold** = the value maximising **F1** on the out-of-fold probabilities. The original notebooks used F2 for the logit and F1 elsewhere; one rule for all keeps the comparison fair.
 3. Refit on the whole training split; predict the test split.
-4. Metrics on the test split at that threshold — precision, recall, F1, balanced accuracy — plus the threshold-free ROC AUC and **AUPRC**; **95 % percentile-bootstrap intervals** (1,000 resamples of the test rows) for AUPRC, F1 and ROC AUC; the same metrics on the out-of-fold predictions.
+4. Metrics on the test split at that threshold - precision, recall, F1, balanced accuracy - plus the threshold-free ROC AUC and **AUPRC**; **95 % percentile-bootstrap intervals** (1,000 resamples of the test rows) for AUPRC, F1 and ROC AUC; the same metrics on the out-of-fold predictions.
 
 Why this matters: choosing the threshold, the features or the resampling on data that is later used for scoring produces optimistic numbers. [LESSONS_LEARNED.md](LESSONS_LEARNED.md) quantifies each of those shortcuts on this dataset.
 
@@ -107,7 +107,7 @@ All classifiers use class weighting (`class_weight="balanced"` or `scale_pos_wei
 
 | Variant | Design matrix | Tuning |
 |---|---|---|
-| unpenalised | reference levels dropped | — (`lbfgs`, 5,000 iterations) |
+| unpenalised | reference levels dropped | - (`lbfgs`, 5,000 iterations) |
 | unpenalised + RFECV | reference levels dropped | recursive feature elimination, step 1, scored on average precision, ≥ 5 features |
 | L2 (ridge) | all dummies | `C ∈ logspace(-3, 3, 30)`, inner 5-fold CV on average precision |
 | L1 (lasso) | all dummies | same grid, `liblinear` |
@@ -120,13 +120,13 @@ Base configuration, chosen conservatively for ~80 positives: `max_depth=3`, `lea
 
 * **Number of trees** is frozen by early stopping *inside* the CV folds (`freeze_n_estimators`): each outer training fold is split 80/20 into a fit set and an early-stopping set (patience 50 rounds, cap 4,000); the final `n_estimators` is the median best iteration × 1.1. The outer validation fold is never used for stopping.
 * **Vanilla**, **+ feature engineering** (§3.2), and **grid search** (depth {3, 6} × learning rate {0.02, 0.05} × trees {150, 300} × class weight {½, 1, 2} × base ratio; nested CV on average precision).
-* **+ SMOTE-NC**: an `imblearn.Pipeline` — altitude/moisture imputation → macro-area → `SMOTENC` on the four categorical columns → one-hot → XGBoost with `scale_pos_weight=1`. Samplers in an imblearn pipeline run only at `fit`, i.e. on training folds; validation and test rows are never resampled. SMOTE-NC (rather than SMOTE) is used because it interpolates numeric columns only and votes on categories, so no synthetic lot has a variety that is 0.37 Bourbon.
+* **+ SMOTE-NC**: an `imblearn.Pipeline` - altitude/moisture imputation → macro-area → `SMOTENC` on the four categorical columns → one-hot → XGBoost with `scale_pos_weight=1`. Samplers in an imblearn pipeline run only at `fit`, i.e. on training folds; validation and test rows are never resampled. SMOTE-NC (rather than SMOTE) is used because it interpolates numeric columns only and votes on categories, so no synthetic lot has a variety that is 0.37 Bourbon.
 
 ### 5.3 Decision tree and random forest (`models/forest.py`)
 
 * Decision tree: grid over `max_depth ∈ {3, 5, 8, None}`, `min_samples_leaf ∈ {2, 4, 8, 16}`.
 * Random forest: 300 trees, grid over `max_depth ∈ {3, 5, 7, None}` × `max_features ∈ {sqrt, None}`.
-* **Reduced random forest**: same grid on the encoded columns whose **out-of-fold permutation importance** (§6) exceeds 0.005 AUPRC. The selection uses training folds only — the original notebook computed it on the test split.
+* **Reduced random forest**: same grid on the encoded columns whose **out-of-fold permutation importance** (§6) exceeds 0.005 AUPRC. The selection uses training folds only - the original notebook computed it on the test split.
 
 ## 6. Interpretation (`coffee_quality/interpret.py`)
 
@@ -141,7 +141,7 @@ On the six standardised numeric variables (moisture, two defect counts, altitude
 
 ## 8. Sensory track (`coffee_quality/sensory.py`)
 
-The cupping attributes are the components of `Total.Cup.Points`, hence any classifier built on them reconstructs the target rather than predicting it. The track is nevertheless kept to answer a different question — *which attributes weigh most in the verdict* — with a stratified 75/25 split, a standardised logistic regression (sklearn + statsmodels for p-values and odds ratios per SD), an L1-penalised path, a random forest (grid on depth and leaf size), out-of-fold permutation importance, and a **combined ranking** that averages the four min–max-scaled importance measures. Near-constant attributes (`Uniformity`, `Clean.Cup`, `Sweetness`: median 10/10 in both classes) and the global `Cupper.Points` are excluded.
+The cupping attributes are the components of `Total.Cup.Points`, hence any classifier built on them reconstructs the target rather than predicting it. The track is nevertheless kept to answer a different question, *which attributes weigh most in the verdict*, with a stratified 75/25 split, a standardised logistic regression (sklearn + statsmodels for p-values and odds ratios per SD), an L1-penalised path, a random forest (grid on depth and leaf size), out-of-fold permutation importance, and a **combined ranking** that averages the four min–max-scaled importance measures. Near-constant attributes (`Uniformity`, `Clean.Cup`, `Sweetness`: median 10/10 in both classes) and the global `Cupper.Points` are excluded.
 
 ## 9. Reproducibility
 
