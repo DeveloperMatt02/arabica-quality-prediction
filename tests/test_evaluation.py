@@ -3,7 +3,8 @@ import pandas as pd
 import pytest
 from sklearn.linear_model import LogisticRegression
 
-from coffee_quality import data, evaluation as E
+from coffee_quality import data
+from coffee_quality import evaluation as E
 from coffee_quality.preprocessing import build_model_pipeline
 
 

@@ -23,7 +23,12 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 from coffee_quality import config as C  # noqa: E402
-from coffee_quality import data, eda, evaluation as E, interpret as I, plotting as P, sensory as S, unsupervised as U  # noqa: E402
+from coffee_quality import data, eda  # noqa: E402
+from coffee_quality import evaluation as E  # noqa: E402
+from coffee_quality import interpret as I  # noqa: E402
+from coffee_quality import plotting as P  # noqa: E402
+from coffee_quality import sensory as S  # noqa: E402
+from coffee_quality import unsupervised as U  # noqa: E402
 from coffee_quality.models import boosting, forest, logistic  # noqa: E402
 
 warnings.filterwarnings("ignore")

@@ -43,6 +43,10 @@ exclude = ["data*", "reports*", "notebooks*", "docs*", "tests*"]
 line-length = 120
 target-version = "py310"
 
+[tool.ruff.lint]
+# Explicit rule set so that the result does not depend on the ruff version.
+select = ["E4", "E7", "E9", "F", "I"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
