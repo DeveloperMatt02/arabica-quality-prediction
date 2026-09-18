@@ -166,8 +166,12 @@ arabica-quality-prediction/
 
 The analysis was carried out as a group project. This repository is the refactored, reproducible version of the team's work.
 
+* **Carlo Aspren Gines Lara**
+* **Caterina Biella**
+* **Ferdinando Conte**
+* **Daniele Perego**
+* **Nicolas Oberi**
 * **Matteo Trossi** — [GitHub](https://github.com/DeveloperMatt02) · [LinkedIn](https://linkedin.com/in/matteotrossi)
-* *(teammates — to be added)*
 
 ## 📄 License
 
