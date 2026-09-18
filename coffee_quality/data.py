@@ -88,7 +88,7 @@ def clean_data(raw: pd.DataFrame, coords: pd.DataFrame | None = None) -> tuple[p
     df = df.drop(columns=[c for c in C.ADMIN_COLS if c in df.columns])
 
     # 3. text hygiene
-    text_cols = df.select_dtypes(include=["object", "string", "str"]).columns
+    text_cols = df.select_dtypes(include=["object", "string"]).columns
     df[text_cols] = df[text_cols].apply(lambda s: s.str.strip()).replace("", np.nan)
     df = df.dropna(subset=C.GEO_COLS, how="all")
     df["Country.of.Origin"] = df["Country.of.Origin"].astype(str).str.strip()
